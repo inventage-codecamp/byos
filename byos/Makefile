@@ -1,2 +1,0 @@
-codegen:
-	./gradlew generateJooq

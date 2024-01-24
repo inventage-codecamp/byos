@@ -13,7 +13,7 @@ import org.jooq.impl.DefaultExecuteListenerProvider
 import java.sql.DriverManager
 
 private const val userName = "postgres"
-private const val password = ""
+private const val password = "postgres"
 private const val url = "jdbc:postgresql://localhost:5432/sakila"
 
 fun <T> executeJooqQuery(withDsl: (dsl: DSLContext) -> T): T {

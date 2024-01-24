@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="example.ByosApplicationTest" time="2.077" tests="12" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/test-classes:/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/classes:/Users/esteiner/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.8.0/kotlin-stdlib-1.8.0.jar:/Users/esteiner/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.22/kotlin-stdlib-common-1.9.22.jar:/Users/esteiner/.m2/repository/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar:/Users/esteiner/.m2/repository/org/jooq/jooq/3.18.7/jooq-3.18.7.jar:/Users/esteiner/.m2/repository/org/jooq/jooq-codegen-maven/3.18.7/jooq-codegen-maven-3.18.7.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.6/maven-plugin-api-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.jar:/Users/esteiner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M2/org.eclipse.sisu.plexus-0.9.0.M2.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-core/3.9.6/maven-core-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-settings/3.9.6/maven-settings-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.6/maven-settings-builder-3.9.6.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.jar:/Users/esteiner/.m2/repository/com/google/inject/guice/5.1.0/guice-5.1.0.jar:/Users/esteiner/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/esteiner/.m2/repository/com/google/guava/guava/32.1.3-jre/guava-32.1.3-jre.jar:/Users/esteiner/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/esteiner/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-component-annotations/2.1.0/plexus-component-annotations-2.1.0.jar:/Users/esteiner/.m2/repository/org/apache/commons/commons-lang3/3.13.0/commons-lang3-3.13.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/plugin-tools/maven-plugin-annotations/3.10.2/maven-plugin-annotations-3.10.2.jar:/Users/esteiner/.m2/repository/org/jooq/jooq-meta/3.18.7/jooq-meta-3.18.7.jar:/Users/esteiner/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.1/jakarta.xml.bind-api-4.0.1.jar:/Users/esteiner/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar:/Users/esteiner/.m2/repository/org/jooq/jooq-codegen/3.18.7/jooq-codegen-3.18.7.jar:/Users/esteiner/.m2/repository/io/r2dbc/r2dbc-spi/1.0.0.RELEASE/r2dbc-spi-1.0.0.RELEASE.jar:/Users/esteiner/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-jdbc-h2/3.6.7/quarkus-jdbc-h2-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-arc/3.6.7/quarkus-arc-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/arc/arc/3.6.7/arc-3.6.7.jar:/Users/esteiner/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/esteiner/.m2/repository/io/smallrye/reactive/mutiny/2.5.1/mutiny-2.5.1.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-annotation/2.1.2/smallrye-common-annotation-2.1.2.jar:/Users/esteiner/.m2/repository/org/eclipse/microprofile/context-propagation/microprofile-context-propagation-api/1.3/microprofile-context-propagation-api-1.3.jar:/Users/esteiner/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/Users/esteiner/.m2/repository/org/locationtech/jts/jts-core/1.17.0/jts-core-1.17.0.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-jdbc-postgresql/3.6.7/quarkus-jdbc-postgresql-3.6.7.jar:/Users/esteiner/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-graphql/3.0.4/spring-boot-starter-graphql-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter/3.0.4/spring-boot-starter-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot/3.0.4/spring-boot-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.0.4/spring-boot-autoconfigure-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.0.4/spring-boot-starter-logging-3.0.4.jar:/Users/esteiner/.m2/repository/ch/qos/logback/logback-classic/1.4.5/logback-classic-1.4.5.jar:/Users/esteiner/.m2/repository/ch/qos/logback/logback-core/1.4.5/logback-core-1.4.5.jar:/Users/esteiner/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.19.0/log4j-to-slf4j-2.19.0.jar:/Users/esteiner/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar:/Users/esteiner/.m2/repository/org/slf4j/jul-to-slf4j/2.0.6/jul-to-slf4j-2.0.6.jar:/Users/esteiner/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/esteiner/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.0.4/spring-boot-starter-json-3.0.4.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.3/jackson-datatype-jdk8-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.3/jackson-datatype-jsr310-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.3/jackson-module-parameter-names-2.15.3.jar:/Users/esteiner/.m2/repository/org/springframework/graphql/spring-graphql/1.1.2/spring-graphql-1.1.2.jar:/Users/esteiner/.m2/repository/io/micrometer/context-propagation/1.0.2/context-propagation-1.0.2.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.0.4/spring-boot-starter-web-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.0.4/spring-boot-starter-tomcat-3.0.4.jar:/Users/esteiner/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.5/tomcat-embed-core-10.1.5.jar:/Users/esteiner/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.5/tomcat-embed-el-10.1.5.jar:/Users/esteiner/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.5/tomcat-embed-websocket-10.1.5.jar:/Users/esteiner/.m2/repository/org/springframework/spring-web/6.0.6/spring-web-6.0.6.jar:/Users/esteiner/.m2/repository/io/micrometer/micrometer-observation/1.11.5/micrometer-observation-1.11.5.jar:/Users/esteiner/.m2/repository/io/micrometer/micrometer-commons/1.11.5/micrometer-commons-1.11.5.jar:/Users/esteiner/.m2/repository/org/springframework/spring-webmvc/6.0.6/spring-webmvc-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-aop/6.0.6/spring-aop-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-expression/6.0.6/spring-expression-6.0.6.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/module/jackson-module-kotlin/2.11.3/jackson-module-kotlin-2.11.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar:/Users/esteiner/.m2/repository/org/jetbrains/kotlin/kotlin-reflect/1.9.22/kotlin-reflect-1.9.22.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-junit5/3.6.7/quarkus-junit5-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-core/3.6.7/quarkus-bootstrap-core-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-app-model/3.6.7/quarkus-bootstrap-app-model-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-io/2.1.2/smallrye-common-io-2.1.2.jar:/Users/esteiner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-test-common/3.6.7/quarkus-test-common-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-core-deployment/3.6.7/quarkus-core-deployment-3.6.7.jar:/Users/esteiner/.m2/repository/org/aesh/readline/2.4/readline-2.4.jar:/Users/esteiner/.m2/repository/org/fusesource/jansi/jansi/2.4.0/jansi-2.4.0.jar:/Users/esteiner/.m2/repository/org/aesh/aesh/2.7/aesh-2.7.jar:/Users/esteiner/.m2/repository/io/quarkus/gizmo/gizmo/1.7.0/gizmo-1.7.0.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-util/9.6/asm-util-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-analysis/9.6/asm-analysis-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-commons/9.6/asm-commons-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-tree/9.6/asm-tree-9.6.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-class-change-agent/3.6.7/quarkus-class-change-agent-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-devtools-utilities/3.6.7/quarkus-devtools-utilities-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-builder/3.6.7/quarkus-builder-3.6.7.jar:/Users/esteiner/.m2/repository/org/graalvm/sdk/graal-sdk/23.0.1/graal-sdk-23.0.1.jar:/Users/esteiner/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-maven-resolver/3.6.7/quarkus-bootstrap-maven-resolver-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/beanbag/smallrye-beanbag-maven/1.3.2/smallrye-beanbag-maven-1.3.2.jar:/Users/esteiner/.m2/repository/io/smallrye/beanbag/smallrye-beanbag-sisu/1.3.2/smallrye-beanbag-sisu-1.3.2.jar:/Users/esteiner/.m2/repository/io/smallrye/beanbag/smallrye-beanbag/1.3.2/smallrye-beanbag-1.3.2.jar:/Users/esteiner/.m2/repository/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar:/Users/esteiner/.m2/repository/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar:/Users/esteiner/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-transport-http/1.9.10/maven-resolver-transport-http-1.9.10.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-provider-api/3.5.3/wagon-provider-api-3.5.3.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-http-shared/3.5.3/wagon-http-shared-3.5.3.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-xml/4.0.0/plexus-xml-4.0.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-xml-impl/4.0.0-alpha-5/maven-xml-impl-4.0.0-alpha-5.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-api-xml/4.0.0-alpha-5/maven-api-xml-4.0.0-alpha-5.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-api-meta/4.0.0-alpha-5/maven-api-meta-4.0.0-alpha-5.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-embedder/3.9.6/maven-embedder-3.9.6.jar:/Users/esteiner/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/Users/esteiner/.m2/repository/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-transport-wagon/1.9.18/maven-resolver-transport-wagon-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-http/3.5.3/wagon-http-3.5.3.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-file/3.5.3/wagon-file-3.5.3.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-gradle-resolver/3.6.7/quarkus-bootstrap-gradle-resolver-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/jandex/3.1.6/jandex-3.1.6.jar:/Users/esteiner/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar:/Users/esteiner/.m2/repository/org/jboss/logging/commons-logging-jboss-logging/1.0.0.Final/commons-logging-jboss-logging-1.0.0.Final.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-junit5-properties/3.6.7/quarkus-junit5-properties-3.6.7.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.1/junit-jupiter-5.10.1.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar:/Users/esteiner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/esteiner/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar:/Users/esteiner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.1/junit-jupiter-params-5.10.1.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.1/junit-jupiter-engine-5.10.1.jar:/Users/esteiner/.m2/repository/org/junit/platform/junit-platform-engine/1.10.1/junit-platform-engine-1.10.1.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-core/3.6.7/quarkus-core-3.6.7.jar:/Users/esteiner/.m2/repository/jakarta/enterprise/jakarta.enterprise.cdi-api/4.0.1/jakarta.enterprise.cdi-api-4.0.1.jar:/Users/esteiner/.m2/repository/jakarta/enterprise/jakarta.enterprise.lang-model/4.0.1/jakarta.enterprise.lang-model-4.0.1.jar:/Users/esteiner/.m2/repository/jakarta/el/jakarta.el-api/5.0.1/jakarta.el-api-5.0.1.jar:/Users/esteiner/.m2/repository/jakarta/interceptor/jakarta.interceptor-api/2.1.0/jakarta.interceptor-api-2.1.0.jar:/Users/esteiner/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-os/2.1.2/smallrye-common-os-2.1.2.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-ide-launcher/3.6.7/quarkus-ide-launcher-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-development-mode-spi/3.6.7/quarkus-development-mode-spi-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/config/smallrye-config/3.4.4/smallrye-config-3.4.4.jar:/Users/esteiner/.m2/repository/io/smallrye/config/smallrye-config-core/3.4.4/smallrye-config-core-3.4.4.jar:/Users/esteiner/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/3.0.3/microprofile-config-api-3.0.3.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-classloader/2.1.2/smallrye-common-classloader-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/config/smallrye-config-common/3.4.4/smallrye-config-common-3.4.4.jar:/Users/esteiner/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/esteiner/.m2/repository/org/jboss/logmanager/jboss-logmanager/3.0.4.Final/jboss-logmanager-3.0.4.Final.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-constraint/2.1.2/smallrye-common-constraint-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-cpu/2.1.2/smallrye-common-cpu-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-expression/2.1.2/smallrye-common-expression-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-function/2.1.2/smallrye-common-function-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-net/2.1.2/smallrye-common-net-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-ref/2.1.2/smallrye-common-ref-2.1.2.jar:/Users/esteiner/.m2/repository/jakarta/json/jakarta.json-api/2.1.3/jakarta.json-api-2.1.3.jar:/Users/esteiner/.m2/repository/org/eclipse/parsson/parsson/1.1.5/parsson-1.1.5.jar:/Users/esteiner/.m2/repository/org/jboss/logging/jboss-logging-annotations/2.2.1.Final/jboss-logging-annotations-2.2.1.Final.jar:/Users/esteiner/.m2/repository/org/jboss/threads/jboss-threads/3.5.1.Final/jboss-threads-3.5.1.Final.jar:/Users/esteiner/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/Users/esteiner/.m2/repository/org/jboss/slf4j/slf4j-jboss-logmanager/2.0.0.Final/slf4j-jboss-logmanager-2.0.0.Final.jar:/Users/esteiner/.m2/repository/org/wildfly/common/wildfly-common/1.7.0.Final/wildfly-common-1.7.0.Final.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-runner/3.6.7/quarkus-bootstrap-runner-3.6.7.jar:/Users/esteiner/.m2/repository/io/github/crac/org-crac/0.1.3/org-crac-0.1.3.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-fs-util/0.0.9/quarkus-fs-util-0.0.9.jar:/Users/esteiner/.m2/repository/com/thoughtworks/xstream/xstream/1.4.20/xstream-1.4.20.jar:/Users/esteiner/.m2/repository/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.jar:/Users/esteiner/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.0.4/spring-boot-starter-test-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-test/3.0.4/spring-boot-test-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.0.4/spring-boot-test-autoconfigure-3.0.4.jar:/Users/esteiner/.m2/repository/com/jayway/jsonpath/json-path/2.7.0/json-path-2.7.0.jar:/Users/esteiner/.m2/repository/net/minidev/json-smart/2.4.7/json-smart-2.4.7.jar:/Users/esteiner/.m2/repository/net/minidev/accessors-smart/2.4.7/accessors-smart-2.4.7.jar:/Users/esteiner/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/Users/esteiner/.m2/repository/net/bytebuddy/byte-buddy/1.14.7/byte-buddy-1.14.7.jar:/Users/esteiner/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/esteiner/.m2/repository/org/mockito/mockito-core/5.3.1/mockito-core-5.3.1.jar:/Users/esteiner/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.4/byte-buddy-agent-1.14.4.jar:/Users/esteiner/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/esteiner/.m2/repository/org/mockito/mockito-junit-jupiter/5.3.1/mockito-junit-jupiter-5.3.1.jar:/Users/esteiner/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/esteiner/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/esteiner/.m2/repository/org/springframework/spring-core/6.0.6/spring-core-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-jcl/6.0.6/spring-jcl-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-test/6.0.6/spring-test-6.0.6.jar:/Users/esteiner/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/esteiner/.m2/repository/org/springframework/spring-webflux/6.0.6/spring-webflux-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-beans/6.0.6/spring-beans-6.0.6.jar:/Users/esteiner/.m2/repository/io/projectreactor/reactor-core/3.5.3/reactor-core-3.5.3.jar:/Users/esteiner/.m2/repository/org/springframework/graphql/spring-graphql-test/1.1.3/spring-graphql-test-1.1.3.jar:/Users/esteiner/.m2/repository/com/graphql-java/graphql-java/21.1/graphql-java-21.1.jar:/Users/esteiner/.m2/repository/com/graphql-java/java-dataloader/3.2.0/java-dataloader-3.2.0.jar:/Users/esteiner/.m2/repository/org/springframework/spring-context/6.0.7/spring-context-6.0.7.jar:"/>
+    <property name="java.vm.vendor" value="Azul Systems, Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://www.azul.com/"/>
+    <property name="user.timezone" value="Europe/Zurich"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CH"/>
+    <property name="sun.boot.library.path" value="/Users/esteiner/.asdf/installs/java/zulu-17.30.15/zulu-17.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/surefire/surefirebooter-20240124232222672_3.jar /Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/surefire 2024-01-24T23-22-22_628-jvmRun1 surefire-20240124232222672_1tmp surefire_0-20240124232222672_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="maven.home" value="/Users/esteiner/.asdf/installs/maven/3.9.3"/>
+    <property name="surefire.test.class.path" value="/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/test-classes:/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/classes:/Users/esteiner/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.8.0/kotlin-stdlib-1.8.0.jar:/Users/esteiner/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.22/kotlin-stdlib-common-1.9.22.jar:/Users/esteiner/.m2/repository/org/jetbrains/annotations/24.0.1/annotations-24.0.1.jar:/Users/esteiner/.m2/repository/org/jooq/jooq/3.18.7/jooq-3.18.7.jar:/Users/esteiner/.m2/repository/org/jooq/jooq-codegen-maven/3.18.7/jooq-codegen-maven-3.18.7.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-plugin-api/3.9.6/maven-plugin-api-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-model/3.9.6/maven-model-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-artifact/3.9.6/maven-artifact-3.9.6.jar:/Users/esteiner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.plexus/0.9.0.M2/org.eclipse.sisu.plexus-0.9.0.M2.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-utils/3.5.1/plexus-utils-3.5.1.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-core/3.9.6/maven-core-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-settings/3.9.6/maven-settings-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-settings-builder/3.9.6/maven-settings-builder-3.9.6.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-sec-dispatcher/2.0/plexus-sec-dispatcher-2.0.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-cipher/2.0/plexus-cipher-2.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-builder-support/3.9.6/maven-builder-support-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-repository-metadata/3.9.6/maven-repository-metadata-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-model-builder/3.9.6/maven-model-builder-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-resolver-provider/3.9.6/maven-resolver-provider-3.9.6.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-impl/1.9.18/maven-resolver-impl-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-named-locks/1.9.18/maven-resolver-named-locks-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-api/1.9.18/maven-resolver-api-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-spi/1.9.18/maven-resolver-spi-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-util/1.9.18/maven-resolver-util-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/shared/maven-shared-utils/3.3.4/maven-shared-utils-3.3.4.jar:/Users/esteiner/.m2/repository/com/google/inject/guice/5.1.0/guice-5.1.0.jar:/Users/esteiner/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/Users/esteiner/.m2/repository/com/google/guava/guava/32.1.3-jre/guava-32.1.3-jre.jar:/Users/esteiner/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/esteiner/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.26/plexus-interpolation-1.26.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-component-annotations/2.1.0/plexus-component-annotations-2.1.0.jar:/Users/esteiner/.m2/repository/org/apache/commons/commons-lang3/3.13.0/commons-lang3-3.13.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/plugin-tools/maven-plugin-annotations/3.10.2/maven-plugin-annotations-3.10.2.jar:/Users/esteiner/.m2/repository/org/jooq/jooq-meta/3.18.7/jooq-meta-3.18.7.jar:/Users/esteiner/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.1/jakarta.xml.bind-api-4.0.1.jar:/Users/esteiner/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.2/jakarta.activation-api-2.1.2.jar:/Users/esteiner/.m2/repository/org/jooq/jooq-codegen/3.18.7/jooq-codegen-3.18.7.jar:/Users/esteiner/.m2/repository/io/r2dbc/r2dbc-spi/1.0.0.RELEASE/r2dbc-spi-1.0.0.RELEASE.jar:/Users/esteiner/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-jdbc-h2/3.6.7/quarkus-jdbc-h2-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-arc/3.6.7/quarkus-arc-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/arc/arc/3.6.7/arc-3.6.7.jar:/Users/esteiner/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/esteiner/.m2/repository/io/smallrye/reactive/mutiny/2.5.1/mutiny-2.5.1.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-annotation/2.1.2/smallrye-common-annotation-2.1.2.jar:/Users/esteiner/.m2/repository/org/eclipse/microprofile/context-propagation/microprofile-context-propagation-api/1.3/microprofile-context-propagation-api-1.3.jar:/Users/esteiner/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:/Users/esteiner/.m2/repository/org/locationtech/jts/jts-core/1.17.0/jts-core-1.17.0.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-jdbc-postgresql/3.6.7/quarkus-jdbc-postgresql-3.6.7.jar:/Users/esteiner/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-graphql/3.0.4/spring-boot-starter-graphql-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter/3.0.4/spring-boot-starter-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot/3.0.4/spring-boot-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.0.4/spring-boot-autoconfigure-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.0.4/spring-boot-starter-logging-3.0.4.jar:/Users/esteiner/.m2/repository/ch/qos/logback/logback-classic/1.4.5/logback-classic-1.4.5.jar:/Users/esteiner/.m2/repository/ch/qos/logback/logback-core/1.4.5/logback-core-1.4.5.jar:/Users/esteiner/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.19.0/log4j-to-slf4j-2.19.0.jar:/Users/esteiner/.m2/repository/org/apache/logging/log4j/log4j-api/2.20.0/log4j-api-2.20.0.jar:/Users/esteiner/.m2/repository/org/slf4j/jul-to-slf4j/2.0.6/jul-to-slf4j-2.0.6.jar:/Users/esteiner/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/esteiner/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.0.4/spring-boot-starter-json-3.0.4.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.15.3/jackson-datatype-jdk8-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.15.3/jackson-datatype-jsr310-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.15.3/jackson-module-parameter-names-2.15.3.jar:/Users/esteiner/.m2/repository/org/springframework/graphql/spring-graphql/1.1.2/spring-graphql-1.1.2.jar:/Users/esteiner/.m2/repository/io/micrometer/context-propagation/1.0.2/context-propagation-1.0.2.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.0.4/spring-boot-starter-web-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.0.4/spring-boot-starter-tomcat-3.0.4.jar:/Users/esteiner/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.5/tomcat-embed-core-10.1.5.jar:/Users/esteiner/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.5/tomcat-embed-el-10.1.5.jar:/Users/esteiner/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.5/tomcat-embed-websocket-10.1.5.jar:/Users/esteiner/.m2/repository/org/springframework/spring-web/6.0.6/spring-web-6.0.6.jar:/Users/esteiner/.m2/repository/io/micrometer/micrometer-observation/1.11.5/micrometer-observation-1.11.5.jar:/Users/esteiner/.m2/repository/io/micrometer/micrometer-commons/1.11.5/micrometer-commons-1.11.5.jar:/Users/esteiner/.m2/repository/org/springframework/spring-webmvc/6.0.6/spring-webmvc-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-aop/6.0.6/spring-aop-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-expression/6.0.6/spring-expression-6.0.6.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/module/jackson-module-kotlin/2.11.3/jackson-module-kotlin-2.11.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.3/jackson-databind-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.3/jackson-core-2.15.3.jar:/Users/esteiner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.3/jackson-annotations-2.15.3.jar:/Users/esteiner/.m2/repository/org/jetbrains/kotlin/kotlin-reflect/1.9.22/kotlin-reflect-1.9.22.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-junit5/3.6.7/quarkus-junit5-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-core/3.6.7/quarkus-bootstrap-core-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-app-model/3.6.7/quarkus-bootstrap-app-model-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-io/2.1.2/smallrye-common-io-2.1.2.jar:/Users/esteiner/.m2/repository/org/eclipse/sisu/org.eclipse.sisu.inject/0.9.0.M2/org.eclipse.sisu.inject-0.9.0.M2.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-test-common/3.6.7/quarkus-test-common-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-core-deployment/3.6.7/quarkus-core-deployment-3.6.7.jar:/Users/esteiner/.m2/repository/org/aesh/readline/2.4/readline-2.4.jar:/Users/esteiner/.m2/repository/org/fusesource/jansi/jansi/2.4.0/jansi-2.4.0.jar:/Users/esteiner/.m2/repository/org/aesh/aesh/2.7/aesh-2.7.jar:/Users/esteiner/.m2/repository/io/quarkus/gizmo/gizmo/1.7.0/gizmo-1.7.0.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-util/9.6/asm-util-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-analysis/9.6/asm-analysis-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-commons/9.6/asm-commons-9.6.jar:/Users/esteiner/.m2/repository/org/ow2/asm/asm-tree/9.6/asm-tree-9.6.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-class-change-agent/3.6.7/quarkus-class-change-agent-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-devtools-utilities/3.6.7/quarkus-devtools-utilities-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-builder/3.6.7/quarkus-builder-3.6.7.jar:/Users/esteiner/.m2/repository/org/graalvm/sdk/graal-sdk/23.0.1/graal-sdk-23.0.1.jar:/Users/esteiner/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.1/junit-platform-launcher-1.10.1.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-maven-resolver/3.6.7/quarkus-bootstrap-maven-resolver-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/beanbag/smallrye-beanbag-maven/1.3.2/smallrye-beanbag-maven-1.3.2.jar:/Users/esteiner/.m2/repository/io/smallrye/beanbag/smallrye-beanbag-sisu/1.3.2/smallrye-beanbag-sisu-1.3.2.jar:/Users/esteiner/.m2/repository/io/smallrye/beanbag/smallrye-beanbag/1.3.2/smallrye-beanbag-1.3.2.jar:/Users/esteiner/.m2/repository/commons-codec/commons-codec/1.16.0/commons-codec-1.16.0.jar:/Users/esteiner/.m2/repository/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar:/Users/esteiner/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-transport-http/1.9.10/maven-resolver-transport-http-1.9.10.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-provider-api/3.5.3/wagon-provider-api-3.5.3.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-http-shared/3.5.3/wagon-http-shared-3.5.3.jar:/Users/esteiner/.m2/repository/org/codehaus/plexus/plexus-xml/4.0.0/plexus-xml-4.0.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-xml-impl/4.0.0-alpha-5/maven-xml-impl-4.0.0-alpha-5.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-api-xml/4.0.0-alpha-5/maven-api-xml-4.0.0-alpha-5.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-api-meta/4.0.0-alpha-5/maven-api-meta-4.0.0-alpha-5.jar:/Users/esteiner/.m2/repository/org/apache/maven/maven-embedder/3.9.6/maven-embedder-3.9.6.jar:/Users/esteiner/.m2/repository/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar:/Users/esteiner/.m2/repository/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-connector-basic/1.9.18/maven-resolver-connector-basic-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/resolver/maven-resolver-transport-wagon/1.9.18/maven-resolver-transport-wagon-1.9.18.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-http/3.5.3/wagon-http-3.5.3.jar:/Users/esteiner/.m2/repository/org/apache/maven/wagon/wagon-file/3.5.3/wagon-file-3.5.3.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-gradle-resolver/3.6.7/quarkus-bootstrap-gradle-resolver-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/jandex/3.1.6/jandex-3.1.6.jar:/Users/esteiner/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar:/Users/esteiner/.m2/repository/org/jboss/logging/commons-logging-jboss-logging/1.0.0.Final/commons-logging-jboss-logging-1.0.0.Final.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-junit5-properties/3.6.7/quarkus-junit5-properties-3.6.7.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.1/junit-jupiter-5.10.1.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.1/junit-jupiter-api-5.10.1.jar:/Users/esteiner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/esteiner/.m2/repository/org/junit/platform/junit-platform-commons/1.10.1/junit-platform-commons-1.10.1.jar:/Users/esteiner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.1/junit-jupiter-params-5.10.1.jar:/Users/esteiner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.1/junit-jupiter-engine-5.10.1.jar:/Users/esteiner/.m2/repository/org/junit/platform/junit-platform-engine/1.10.1/junit-platform-engine-1.10.1.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-core/3.6.7/quarkus-core-3.6.7.jar:/Users/esteiner/.m2/repository/jakarta/enterprise/jakarta.enterprise.cdi-api/4.0.1/jakarta.enterprise.cdi-api-4.0.1.jar:/Users/esteiner/.m2/repository/jakarta/enterprise/jakarta.enterprise.lang-model/4.0.1/jakarta.enterprise.lang-model-4.0.1.jar:/Users/esteiner/.m2/repository/jakarta/el/jakarta.el-api/5.0.1/jakarta.el-api-5.0.1.jar:/Users/esteiner/.m2/repository/jakarta/interceptor/jakarta.interceptor-api/2.1.0/jakarta.interceptor-api-2.1.0.jar:/Users/esteiner/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-os/2.1.2/smallrye-common-os-2.1.2.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-ide-launcher/3.6.7/quarkus-ide-launcher-3.6.7.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-development-mode-spi/3.6.7/quarkus-development-mode-spi-3.6.7.jar:/Users/esteiner/.m2/repository/io/smallrye/config/smallrye-config/3.4.4/smallrye-config-3.4.4.jar:/Users/esteiner/.m2/repository/io/smallrye/config/smallrye-config-core/3.4.4/smallrye-config-core-3.4.4.jar:/Users/esteiner/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/3.0.3/microprofile-config-api-3.0.3.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-classloader/2.1.2/smallrye-common-classloader-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/config/smallrye-config-common/3.4.4/smallrye-config-common-3.4.4.jar:/Users/esteiner/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/esteiner/.m2/repository/org/jboss/logmanager/jboss-logmanager/3.0.4.Final/jboss-logmanager-3.0.4.Final.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-constraint/2.1.2/smallrye-common-constraint-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-cpu/2.1.2/smallrye-common-cpu-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-expression/2.1.2/smallrye-common-expression-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-function/2.1.2/smallrye-common-function-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-net/2.1.2/smallrye-common-net-2.1.2.jar:/Users/esteiner/.m2/repository/io/smallrye/common/smallrye-common-ref/2.1.2/smallrye-common-ref-2.1.2.jar:/Users/esteiner/.m2/repository/jakarta/json/jakarta.json-api/2.1.3/jakarta.json-api-2.1.3.jar:/Users/esteiner/.m2/repository/org/eclipse/parsson/parsson/1.1.5/parsson-1.1.5.jar:/Users/esteiner/.m2/repository/org/jboss/logging/jboss-logging-annotations/2.2.1.Final/jboss-logging-annotations-2.2.1.Final.jar:/Users/esteiner/.m2/repository/org/jboss/threads/jboss-threads/3.5.1.Final/jboss-threads-3.5.1.Final.jar:/Users/esteiner/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/Users/esteiner/.m2/repository/org/jboss/slf4j/slf4j-jboss-logmanager/2.0.0.Final/slf4j-jboss-logmanager-2.0.0.Final.jar:/Users/esteiner/.m2/repository/org/wildfly/common/wildfly-common/1.7.0.Final/wildfly-common-1.7.0.Final.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-bootstrap-runner/3.6.7/quarkus-bootstrap-runner-3.6.7.jar:/Users/esteiner/.m2/repository/io/github/crac/org-crac/0.1.3/org-crac-0.1.3.jar:/Users/esteiner/.m2/repository/io/quarkus/quarkus-fs-util/0.0.9/quarkus-fs-util-0.0.9.jar:/Users/esteiner/.m2/repository/com/thoughtworks/xstream/xstream/1.4.20/xstream-1.4.20.jar:/Users/esteiner/.m2/repository/io/github/x-stream/mxparser/1.2.2/mxparser-1.2.2.jar:/Users/esteiner/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.0.4/spring-boot-starter-test-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-test/3.0.4/spring-boot-test-3.0.4.jar:/Users/esteiner/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.0.4/spring-boot-test-autoconfigure-3.0.4.jar:/Users/esteiner/.m2/repository/com/jayway/jsonpath/json-path/2.7.0/json-path-2.7.0.jar:/Users/esteiner/.m2/repository/net/minidev/json-smart/2.4.7/json-smart-2.4.7.jar:/Users/esteiner/.m2/repository/net/minidev/accessors-smart/2.4.7/accessors-smart-2.4.7.jar:/Users/esteiner/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/Users/esteiner/.m2/repository/net/bytebuddy/byte-buddy/1.14.7/byte-buddy-1.14.7.jar:/Users/esteiner/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/esteiner/.m2/repository/org/mockito/mockito-core/5.3.1/mockito-core-5.3.1.jar:/Users/esteiner/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.4/byte-buddy-agent-1.14.4.jar:/Users/esteiner/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/esteiner/.m2/repository/org/mockito/mockito-junit-jupiter/5.3.1/mockito-junit-jupiter-5.3.1.jar:/Users/esteiner/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/Users/esteiner/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/esteiner/.m2/repository/org/springframework/spring-core/6.0.6/spring-core-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-jcl/6.0.6/spring-jcl-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-test/6.0.6/spring-test-6.0.6.jar:/Users/esteiner/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/esteiner/.m2/repository/org/springframework/spring-webflux/6.0.6/spring-webflux-6.0.6.jar:/Users/esteiner/.m2/repository/org/springframework/spring-beans/6.0.6/spring-beans-6.0.6.jar:/Users/esteiner/.m2/repository/io/projectreactor/reactor-core/3.5.3/reactor-core-3.5.3.jar:/Users/esteiner/.m2/repository/org/springframework/graphql/spring-graphql-test/1.1.3/spring-graphql-test-1.1.3.jar:/Users/esteiner/.m2/repository/com/graphql-java/graphql-java/21.1/graphql-java-21.1.jar:/Users/esteiner/.m2/repository/com/graphql-java/java-dataloader/3.2.0/java-dataloader-3.2.0.jar:/Users/esteiner/.m2/repository/org/springframework/spring-context/6.0.7/spring-context-6.0.7.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/esteiner"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2021-10-19"/>
+    <property name="java.home" value="/Users/esteiner/.asdf/installs/java/zulu-17.30.15/zulu-17.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos/target/surefire/surefirebooter-20240124232222672_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.1+12-LTS"/>
+    <property name="user.name" value="esteiner"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="14.2.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Zulu17.30+15-CA"/>
+    <property name="localRepository" value="/Users/esteiner/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://www.azul.com/support/"/>
+    <property name="java.io.tmpdir" value="/var/folders/mz/dynkmzq51717c353g04d10th0000gn/T/"/>
+    <property name="java.version" value="17.0.1"/>
+    <property name="user.dir" value="/Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="65835"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.util.logging.manager" value="org.jboss.logmanager.LogManager"/>
+    <property name="java.library.path" value="/Users/esteiner/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Azul Systems, Inc."/>
+    <property name="java.vm.version" value="17.0.1+12-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="multipleQueries" classname="example.ByosApplicationTest" time="1.036">
+    <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.4)
+
+2024-01-24 23:22:23,359 INFO  [exa.ByosApplicationTest] (main) Starting ByosApplicationTest using Java 17.0.1 with PID 65835 (started by esteiner in /Users/esteiner/Workspaces/GitHub/GraphQL/byos/byos)
+2024-01-24 23:22:23,361 INFO  [exa.ByosApplicationTest] (main) No active profile set, falling back to 1 default profile: "default"
+2024-01-24 23:22:23,773 INFO  [exa.ByosApplicationTest] (main) Started ByosApplicationTest in 0.554 seconds (process running for 1.051)
+2024-01-24T23:22:24.759+01:00  INFO 65835 --- [           main] org.jooq.Constants                       : 
+                                      
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@  @@        @@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@        @@@@@@@@@@
+@@@@@@@@@@@@@@@@  @@  @@    @@@@@@@@@@
+@@@@@@@@@@  @@@@  @@  @@    @@@@@@@@@@
+@@@@@@@@@@        @@        @@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@        @@        @@@@@@@@@@
+@@@@@@@@@@    @@  @@  @@@@  @@@@@@@@@@
+@@@@@@@@@@    @@  @@  @@@@  @@@@@@@@@@
+@@@@@@@@@@        @@  @  @  @@@@@@@@@@
+@@@@@@@@@@        @@        @@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  Thank you for using jOOQ 3.18.7 (Build date: 2023-10-10T12:53:05Z)
+                                      
+2024-01-24T23:22:24.760+01:00  INFO 65835 --- [           main] org.jooq.Constants                       : 
+
+jOOQ tip of the day: A Field<Boolean> can be turned into a Condition using DSL.condition(Field<Boolean>) for use in WHERE, HAVING, etc.: https://www.jooq.org/doc/latest/manual/sql-building/conditional-expressions/boolean-column/
+
+2024-01-24T23:22:24.776+01:00  WARN 65835 --- [           main] o.j.i.D.logVersionSupport                : Version mismatch         : Database version is older than what dialect POSTGRES supports: 14.5. Consider https://www.jooq.org/download/support-matrix to see what jOOQ version and edition supports which RDBMS versions.
+select (
+  with
+    "cte" as (
+      select "actorById-0"."last_name" as "last_name"
+      from "public"."actor" as "actorById-0"
+      where "actorById-0"."actor_id" = 1
+      order by "actorById-0"."actor_id" asc
+    )
+  select json_build_object('last_name', "last_name")
+  from "cte"
+) as "a1"
+select (
+  with
+    "cte" as (
+      select "actorById-1"."last_name" as "last_name"
+      from "public"."actor" as "actorById-1"
+      where "actorById-1"."actor_id" = 2
+      order by "actorById-1"."actor_id" asc
+    )
+  select json_build_object('last_name', "last_name")
+  from "cte"
+) as "a2"
++-------------------------+
+|a1                       |
++-------------------------+
+|{"last_name" : "GUINESS"}|
++-------------------------+
+
++--------------------------+
+|a2                        |
++--------------------------+
+|{"last_name" : "WAHLBERG"}|
++--------------------------+
+
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@607fbe09]
+SLF4J: Found provider [org.slf4j.impl.JBossSlf4jServiceProvider@60a2630a]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [ch.qos.logback.classic.spi.LogbackServiceProvider@607fbe09]
+]]></system-err>
+  </testcase>
+  <testcase name="simpleQuery" classname="example.ByosApplicationTest" time="0.035">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allFilms-0"."film_id" as "film_id",
+        "allFilms-0"."title" as "title",
+        "allFilms-0"."release_year" as "release_year"
+      from "public"."film" as "allFilms-0"
+      order by "allFilms-0"."film_id" asc
+      fetch next 3 rows only
+    )
+  select json_build_object('edges', coalesce(
+    json_agg(json_build_object('node', json_build_object(
+      'film_id', "film_id",
+      'title', "title",
+      'release_year', "release_year"
+    ))),
+    json_build_array()
+  ))
+  from "cte"
+) as "allFilms"
++--------------------------------------------------+
+|allFilms                                          |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"film_id" : 1, "title" :...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryWithCustomOrder" classname="example.ByosApplicationTest" time="0.034">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allFilms-0"."film_id" as "film_id",
+        "allFilms-0"."title" as "title",
+        cast(json_build_object(
+          'title', "allFilms-0"."title",
+          'film_id', "allFilms-0"."film_id"
+        ) as varchar) as "cursor"
+      from "public"."film" as "allFilms-0"
+      order by "allFilms-0"."title" asc, "allFilms-0"."film_id" asc
+      fetch next 3 rows only
+    )
+  select json_build_object('edges', coalesce(
+    json_agg(json_build_object(
+      'node', json_build_object(
+        'film_id', "film_id",
+        'title', "title"
+      ),
+      'cursor', cursor
+    )),
+    json_build_array()
+  ))
+  from "cte"
+) as "allFilms"
++--------------------------------------------------+
+|allFilms                                          |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"film_id" : 1, "title" :...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryWithArgument" classname="example.ByosApplicationTest" time="0.015">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "actorById-0"."actor_id" as "actor_id",
+        "actorById-0"."last_name" as "last_name"
+      from "public"."actor" as "actorById-0"
+      where "actorById-0"."actor_id" = 1
+      order by "actorById-0"."actor_id" asc
+    )
+  select json_build_object(
+    'actor_id', "actor_id",
+    'last_name', "last_name"
+  )
+  from "cte"
+) as "actorById"
++-----------------------------------------+
+|actorById                                |
++-----------------------------------------+
+|{"actor_id" : 1, "last_name" : "GUINESS"}|
++-----------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="nToMRelationTwoWays" classname="example.ByosApplicationTest" time="0.041">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allStores-0"."store_id" as "store_id",
+        (
+          with
+            "cte" as (
+              select "films-1"."film_id" as "film_id"
+              from "public"."film" as "films-1"
+              where exists (
+                select 1 as "one"
+                from "public"."inventory"
+                where (
+                  "allStores-0"."store_id" = "public"."inventory"."store_id"
+                  and "public"."inventory"."film_id" = "films-1"."film_id"
+                )
+              )
+              order by "films-1"."film_id" asc
+              fetch next 2 rows only
+            )
+          select json_build_object('edges', coalesce(
+            json_agg(json_build_object('node', json_build_object('film_id', "film_id"))),
+            json_build_array()
+          ))
+          from "cte"
+        ) as "films",
+        (
+          with
+            "cte" as (
+              select (
+                with
+                  "cte" as (
+                    select "film-3"."film_id" as "film_id"
+                    from "public"."film" as "film-3"
+                    where "inventories-2"."film_id" = "film-3"."film_id"
+                    order by "film-3"."film_id" asc
+                  )
+                select json_build_object('film_id', "film_id")
+                from "cte"
+              ) as "film"
+              from "public"."inventory" as "inventories-2"
+              where "allStores-0"."store_id" = "inventories-2"."store_id"
+              order by "inventories-2"."inventory_id" asc
+              fetch next 2 rows only
+            )
+          select json_build_object('edges', coalesce(
+            json_agg(json_build_object('node', json_build_object('film', "film"))),
+            json_build_array()
+          ))
+          from "cte"
+        ) as "inventories"
+      from "public"."store" as "allStores-0"
+      order by "allStores-0"."store_id" asc
+    )
+  select json_build_object('edges', coalesce(
+    json_agg(json_build_object('node', json_build_object(
+      'store_id', "store_id",
+      'films', "films",
+      'inventories', "inventories"
+    ))),
+    json_build_array()
+  ))
+  from "cte"
+) as "allStores"
++--------------------------------------------------+
+|allStores                                         |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"store_id" : 1, "films" ...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="simpleQueryWithMoreDepth" classname="example.ByosApplicationTest" time="0.012">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allFilms-0"."title" as "title",
+        (
+          with
+            "cte" as (
+              select "actors-1"."actor_id" as "actor_id"
+              from "public"."actor" as "actors-1"
+              where exists (
+                select 1 as "one"
+                from "public"."film_actor"
+                where (
+                  "allFilms-0"."film_id" = "public"."film_actor"."film_id"
+                  and "public"."film_actor"."actor_id" = "actors-1"."actor_id"
+                )
+              )
+              order by "actors-1"."actor_id" asc
+            )
+          select coalesce(
+            json_agg(json_build_object('actor_id', "actor_id")),
+            json_build_array()
+          )
+          from "cte"
+        ) as "actors"
+      from "public"."film" as "allFilms-0"
+      order by "allFilms-0"."film_id" asc
+      fetch next 2 rows only
+    )
+  select json_build_object('edges', coalesce(
+    json_agg(json_build_object('node', json_build_object(
+      'title', "title",
+      'actors', "actors"
+    ))),
+    json_build_array()
+  ))
+  from "cte"
+) as "allFilms"
++--------------------------------------------------+
+|allFilms                                          |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"title" : "ACADEMY DINOS...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryReturningNull" classname="example.ByosApplicationTest" time="0.011">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select (
+        with
+          "cte" as (
+            select "original_language-1"."name" as "name"
+            from "public"."language" as "original_language-1"
+            where "filmById-0"."original_language_id" = "original_language-1"."language_id"
+            order by "original_language-1"."language_id" asc
+          )
+        select json_build_object('name', "name")
+        from "cte"
+      ) as "original_language"
+      from "public"."film" as "filmById-0"
+      where "filmById-0"."film_id" = 1
+      order by "filmById-0"."film_id" asc
+    )
+  select json_build_object('original_language', "original_language")
+  from "cte"
+) as "filmById"
++----------------------------+
+|filmById                    |
++----------------------------+
+|{"original_language" : null}|
++----------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryWithAlias" classname="example.ByosApplicationTest" time="0.018">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "filmById-0"."film_id" as "id",
+        "filmById-0"."film_id" as "film_id",
+        (
+          with
+            "cte" as (
+              select "actors-1"."actor_id" as "aid"
+              from "public"."actor" as "actors-1"
+              where exists (
+                select 1 as "one"
+                from "public"."film_actor"
+                where (
+                  "filmById-0"."film_id" = "public"."film_actor"."film_id"
+                  and "public"."film_actor"."actor_id" = "actors-1"."actor_id"
+                )
+              )
+              order by "actors-1"."actor_id" asc
+            )
+          select coalesce(
+            json_agg(json_build_object('aid', "aid")),
+            json_build_array()
+          )
+          from "cte"
+        ) as "star"
+      from "public"."film" as "filmById-0"
+      where "filmById-0"."film_id" = 2
+      order by "filmById-0"."film_id" asc
+    )
+  select json_build_object(
+    'id', "id",
+    'film_id', "film_id",
+    'star', "star"
+  )
+  from "cte"
+) as "movie2"
++--------------------------------------------------+
+|movie2                                            |
++--------------------------------------------------+
+|{"id" : 2, "film_id" : 2, "star" : [{"aid" : 19...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryWithSelfRelation" classname="example.ByosApplicationTest" time="0.033">
+    <failure message="expected: &lt;{&quot;data&quot;:{&quot;allCategories&quot;:{&quot;edges&quot;:[{&quot;node&quot;:{&quot;name&quot;:&quot;Action&quot;,&quot;parent_category&quot;:null,&quot;subcategories&quot;:{&quot;edges&quot;:[{&quot;node&quot;:{&quot;name&quot;:&quot;Sci-Fi&quot;}}]}}},{&quot;node&quot;:{&quot;name&quot;:&quot;Animation&quot;,&quot;parent_category&quot;:null,&quot;subcategories&quot;:{&quot;edges&quot;:[{&quot;node&quot;:{&quot;name&quot;:&quot;Children&quot;}},{&quot;node&quot;:{&quot;name&quot;:&quot;Classics&quot;}}]}}},{&quot;node&quot;:{&quot;name&quot;:&quot;Children&quot;,&quot;parent_category&quot;:{&quot;name&quot;:&quot;Animation&quot;},&quot;subcategories&quot;:{&quot;edges&quot;:[{&quot;node&quot;:{&quot;name&quot;:&quot;Family&quot;}}]}}}]}}}&gt; but was: &lt;{&quot;data&quot;:{&quot;allCategories&quot;:{&quot;edges&quot;:[{&quot;node&quot;:{&quot;name&quot;:&quot;Action&quot;,&quot;parent_category&quot;:null,&quot;subcategories&quot;:{&quot;edges&quot;:[]}}},{&quot;node&quot;:{&quot;name&quot;:&quot;Animation&quot;,&quot;parent_category&quot;:null,&quot;subcategories&quot;:{&quot;edges&quot;:[]}}},{&quot;node&quot;:{&quot;name&quot;:&quot;Children&quot;,&quot;parent_category&quot;:null,&quot;subcategories&quot;:{&quot;edges&quot;:[]}}}]}}}&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <{"data":{"allCategories":{"edges":[{"node":{"name":"Action","parent_category":null,"subcategories":{"edges":[{"node":{"name":"Sci-Fi"}}]}}},{"node":{"name":"Animation","parent_category":null,"subcategories":{"edges":[{"node":{"name":"Children"}},{"node":{"name":"Classics"}}]}}},{"node":{"name":"Children","parent_category":{"name":"Animation"},"subcategories":{"edges":[{"node":{"name":"Family"}}]}}}]}}}> but was: <{"data":{"allCategories":{"edges":[{"node":{"name":"Action","parent_category":null,"subcategories":{"edges":[]}}},{"node":{"name":"Animation","parent_category":null,"subcategories":{"edges":[]}}},{"node":{"name":"Children","parent_category":null,"subcategories":{"edges":[]}}}]}}}>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at example.TestHelpersKt.assertJsonEquals(TestHelpers.kt:12)
+	at example.ByosApplicationTest.queryWithSelfRelation(ByosApplicationTest.kt:277)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+]]></failure>
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allCategories-0"."name" as "name",
+        (
+          with
+            "cte" as (
+              select "parent_category-1"."name" as "name"
+              from "public"."category" as "parent_category-1"
+              where "allCategories-0"."parent_category_id" = "parent_category-1"."category_id"
+              order by "parent_category-1"."category_id" asc
+            )
+          select json_build_object('name', "name")
+          from "cte"
+        ) as "parent_category",
+        (
+          with
+            "cte" as (
+              select "subcategories-2"."name" as "name"
+              from "public"."category" as "subcategories-2"
+              where "allCategories-0"."category_id" = "subcategories-2"."parent_category_id"
+              order by "subcategories-2"."category_id" asc
+            )
+          select json_build_object('edges', coalesce(
+            json_agg(json_build_object('node', json_build_object('name', "name"))),
+            json_build_array()
+          ))
+          from "cte"
+        ) as "subcategories"
+      from "public"."category" as "allCategories-0"
+      order by "allCategories-0"."category_id" asc
+      fetch next 3 rows only
+    )
+  select json_build_object('edges', coalesce(
+    json_agg(json_build_object('node', json_build_object(
+      'name', "name",
+      'parent_category', "parent_category",
+      'subcategories', "subcategories"
+    ))),
+    json_build_array()
+  ))
+  from "cte"
+) as "allCategories"
++--------------------------------------------------+
+|allCategories                                     |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"name" : "Action", "pare...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryWithFirstLimit" classname="example.ByosApplicationTest" time="0.014">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allFilms-0"."film_id" as "film_id",
+        (
+          with
+            "cte" as (
+              select
+                "actors-1"."actor_id" as "actor_id",
+                (
+                  with
+                    "cte" as (
+                      select "films-2"."film_id" as "film_id"
+                      from "public"."film" as "films-2"
+                      where (
+                        "films-2"."release_year" = 2006
+                        and exists (
+                          select 1 as "one"
+                          from "public"."film_actor"
+                          where (
+                            "actors-1"."actor_id" = "public"."film_actor"."actor_id"
+                            and "public"."film_actor"."film_id" = "films-2"."film_id"
+                          )
+                        )
+                      )
+                      order by "films-2"."film_id" asc
+                      fetch next 1 rows only
+                    )
+                  select json_build_object('edges', coalesce(
+                    json_agg(json_build_object('node', json_build_object('film_id', "film_id"))),
+                    json_build_array()
+                  ))
+                  from "cte"
+                ) as "films"
+              from "public"."actor" as "actors-1"
+              where exists (
+                select 1 as "one"
+                from "public"."film_actor"
+                where (
+                  "allFilms-0"."film_id" = "public"."film_actor"."film_id"
+                  and "public"."film_actor"."actor_id" = "actors-1"."actor_id"
+                )
+              )
+              order by "actors-1"."actor_id" asc
+            )
+          select coalesce(
+            json_agg(json_build_object(
+              'actor_id', "actor_id",
+              'films', "films"
+            )),
+            json_build_array()
+          )
+          from "cte"
+        ) as "actors",
+        cast(json_build_object('film_id', "allFilms-0"."film_id") as varchar) as "cursor"
+      from "public"."film" as "allFilms-0"
+      order by "allFilms-0"."film_id" asc
+      fetch next 1 rows only
+    )
+  select json_build_object(
+    'edges', coalesce(
+      json_agg(json_build_object(
+        'node', json_build_object(
+          'film_id', "film_id",
+          'actors', "actors"
+        ),
+        'cursor', cursor
+      )),
+      json_build_array()
+    ),
+    'totalCount', (
+      select count(*)
+      from "public"."film" as "allFilms-0"
+    )
+  )
+  from "cte"
+) as "allFilms"
++--------------------------------------------------+
+|allFilms                                          |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"film_id" : 1, "actors" ...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="queryReturningObject" classname="example.ByosApplicationTest" time="0.017">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select "filmById-0"."title" as "title"
+      from "public"."film" as "filmById-0"
+      where "filmById-0"."film_id" = 1
+      order by "filmById-0"."film_id" asc
+    )
+  select json_build_object('title', "title")
+  from "cte"
+) as "filmById"
++------------------------------+
+|filmById                      |
++------------------------------+
+|{"title" : "ACADEMY DINOSAUR"}|
++------------------------------+
+
+]]></system-out>
+  </testcase>
+  <testcase name="orderByMultipleFieldsAndUseCursor" classname="example.ByosApplicationTest" time="0.039">
+    <system-out><![CDATA[select (
+  with
+    "cte" as (
+      select
+        "allFilms-0"."title" as "title",
+        cast(json_build_object(
+          'release_year', "allFilms-0"."release_year",
+          'title', "allFilms-0"."title",
+          'film_id', "allFilms-0"."film_id"
+        ) as varchar) as "cursor"
+      from "public"."film" as "allFilms-0"
+      where (
+        "allFilms-0"."release_year" > 2006
+        or (
+          "allFilms-0"."release_year" = 2006
+          and (
+            "allFilms-0"."title" < 'AFFAIR PREJUDICE'
+            or (
+              "allFilms-0"."title" = 'AFFAIR PREJUDICE'
+              and "allFilms-0"."film_id" > 4
+            )
+          )
+        )
+      )
+      order by "allFilms-0"."release_year" asc, "allFilms-0"."title" desc, "allFilms-0"."film_id" asc
+    )
+  select json_build_object(
+    'edges', coalesce(
+      json_agg(json_build_object(
+        'node', json_build_object('title', "title"),
+        'cursor', cursor
+      )),
+      json_build_array()
+    ),
+    'totalCount', (
+      select count(*)
+      from "public"."film" as "allFilms-0"
+    )
+  )
+  from "cte"
+) as "allFilms"
++--------------------------------------------------+
+|allFilms                                          |
++--------------------------------------------------+
+|{"edges" : [{"node" : {"title" : "ADAPTATION HO...|
++--------------------------------------------------+
+
+]]></system-out>
+  </testcase>
+</testsuite>

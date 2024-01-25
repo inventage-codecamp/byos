@@ -11,7 +11,12 @@ class DemoSchemaProvider : SchemaProvider {
 
     override fun getSchema(): GraphQLSchema {
         val schemaFile = File("src/main/resources/graphql/schema.graphqls")
-        val schema = SchemaGenerator().makeExecutableSchema(SchemaParser().parse(schemaFile), RuntimeWiring.newRuntimeWiring().build())
+        val schema =
+                SchemaGenerator()
+                        .makeExecutableSchema(
+                                SchemaParser().parse(schemaFile),
+                                RuntimeWiring.newRuntimeWiring().build()
+                        )
         return schema
     }
 }

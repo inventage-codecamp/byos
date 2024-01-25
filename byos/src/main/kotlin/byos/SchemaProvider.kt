@@ -4,5 +4,5 @@ import graphql.schema.GraphQLSchema
 
 interface SchemaProvider {
 
-    fun getSchema() : GraphQLSchema
+    fun getSchema(): GraphQLSchema
 }

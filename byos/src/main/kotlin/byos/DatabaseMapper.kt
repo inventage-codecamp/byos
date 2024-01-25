@@ -6,7 +6,11 @@ import org.jooq.Table
 
 interface DatabaseMapper {
 
-    fun getTableWithAlias(relation: InternalQueryNode.Relation) : Table<out Record>
+    fun getTableWithAlias(relation: InternalQueryNode.Relation): Table<out Record>
 
-    fun getConditionForRelationship(relationshipName: String, left: Table<*>, right: Table<*>) : Condition?
+    fun getConditionForRelationship(
+            relationshipName: String,
+            left: Table<*>,
+            right: Table<*>
+    ): Condition?
 }

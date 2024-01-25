@@ -233,7 +233,8 @@ class QueryTranspiler(
         val (paginationArgument, otherArguments) =
                 relation.arguments.partition { it.name == "first" }
         val (orderByArgument, otherArguments2) = otherArguments.partition { it.name == "orderBy" }
-        val (afterArgument, filterArguments) = otherArguments2.partition { it.name == "after" }
+        val (afterArgument, whereArguments) = otherArguments2.partition { it.name == "after" }
+        val (whereArgument, filterArguments) = whereArguments.partition { it.name == "where" }
 
         val limitValue = (paginationArgument.firstOrNull()?.value as IntValue?)?.value
 

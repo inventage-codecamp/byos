@@ -1,13 +1,16 @@
 package example
 
+import graphql.parser.Parser
 import org.junit.jupiter.api.Test
 
 internal class ByosApplicationTest {
     private lateinit var graphQLService: GraphQLService
+    private lateinit var graphqlParser: Parser
 
     @Test
     fun simpleQuery() {
-        val query = """
+        val query =
+                """
             query {
               allFilms(first: 3) {
                 edges {
@@ -20,7 +23,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allFilms": {
@@ -51,12 +55,18 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun simpleQueryWithMoreDepth() {
-        val query = """
+        val query =
+                """
             query {
               allFilms(first: 2) {
                 edges {
@@ -70,7 +80,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allFilms": {
@@ -136,12 +147,18 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryReturningObject() {
-        val query = """
+        val query =
+                """
             query {
               filmById(film_id: 1) {
                 title
@@ -149,7 +166,8 @@ internal class ByosApplicationTest {
             }
 
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "filmById": {
@@ -159,12 +177,18 @@ internal class ByosApplicationTest {
             }
 
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryReturningNull() {
-        val query = """
+        val query =
+                """
             query {
               filmById(film_id: 1) {
                 original_language {
@@ -173,7 +197,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "filmById": {
@@ -182,12 +207,18 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryWithSelfRelation() {
-        val query = """
+        val query =
+                """
             {
               allCategories(first: 3) {
                 edges {
@@ -208,7 +239,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allCategories": {
@@ -270,12 +302,18 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryWithAlias() {
-        val query = """
+        val query =
+                """
             query {
               movie2: filmById(film_id: 2) {
                 id: film_id
@@ -286,7 +324,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "movie2": {
@@ -310,12 +349,18 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun multipleQueries() {
-        val query = """
+        val query =
+                """
             {
               a1: actorById(actor_id: 1) {
                 last_name
@@ -325,7 +370,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "a1": {
@@ -337,12 +383,18 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryWithArgument() {
-        val query = """
+        val query =
+                """
             query {
               actorById(actor_id: 1) {
                 actor_id
@@ -351,7 +403,8 @@ internal class ByosApplicationTest {
             }
             
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "actorById": {
@@ -361,12 +414,18 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun nToMRelationTwoWays() {
-        val query = """
+        val query =
+                """
             {
               allStores {
                 edges {
@@ -393,7 +452,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allStores": {
@@ -477,12 +537,18 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryWithFirstLimit() {
-        val query = """
+        val query =
+                """
             query {
               allFilms(first: 1) {
                 edges {
@@ -505,7 +571,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allFilms": {
@@ -644,12 +711,18 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun queryWithCustomOrder() {
-        val query = """
+        val query =
+                """
             {
               allFilms(first: 3, orderBy: {title: ASC}) {
                 edges {
@@ -662,7 +735,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allFilms": {
@@ -693,12 +767,18 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 
     @Test
     fun orderByMultipleFieldsAndUseCursor() {
-        val query = """
+        val query =
+                """
             {
               allFilms (orderBy: {release_year: ASC, title: DESC, film_id: ASC}, after: "{\"release_year\" : 2006, \"title\" : \"AFFAIR PREJUDICE\", \"film_id\" : 4}") {
                 edges {
@@ -711,7 +791,8 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        val expectedResult = """
+        val expectedResult =
+                """
             {
               "data": {
                 "allFilms": {
@@ -740,6 +821,11 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
+        assertJsonEquals(
+                expectedResult,
+                graphQLService.executeGraphQLQuery(
+                        RequestInfo(graphqlParser.parseDocument(query), null, emptyMap())
+                )
+        )
     }
 }

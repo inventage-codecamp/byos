@@ -26,10 +26,14 @@ class GraphQLService() {
         private const val introspectionQuery = "IntrospectionQuery"
         private val locale = Locale.ENGLISH
 
-        private val schema = DemoSchemaProvider().getSchema()
-        private val graphQL = GraphQL.newGraphQL(schema).build()
         private val jsonObjectMapper = ObjectMapper()
+
+        private val schema = DemoSchemaProvider().getSchema()
+        private val schemaValidator = Validator()
+
+        private val graphQL = GraphQL.newGraphQL(schema).build()
         private val graphqlParser = Parser()
+
         private val databaseMapper = DemoDatabaseMapper()
         private val queryTranspiler =
                 QueryTranspiler(
@@ -61,7 +65,7 @@ class GraphQLService() {
     fun executeGraphQLQuery(requestInfo: RequestInfo): String {
         val (document, operationName, _) = requestInfo // TODO support variables
 
-        val errors = Validator().validateDocument(schema, document, locale)
+        val errors = schemaValidator.validateDocument(schema, document, locale)
         if (errors.isNotEmpty()) {
             return jsonObjectMapper.writeValueAsString(
                     mapOf("data" to null, "errors" to errors.map { it.toSpecification() })

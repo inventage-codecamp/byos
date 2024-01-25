@@ -17,11 +17,12 @@ private const val password = "postgres"
 private const val url = "jdbc:postgresql://localhost:5432/sakila"
 
 fun <T> executeJooqQuery(withDsl: (dsl: DSLContext) -> T): T {
-    val connection = DriverManager.getConnection(url, userName, password)
-    val configuration = DefaultConfiguration().set(connection).set(SQLDialect.POSTGRES)
-    configuration.set(DefaultExecuteListenerProvider(PrettyPrinter()))
+    val connection =
+            DriverManager.getConnection(url, userName, password) // TODO persistent connection
+    val jooqConfig = DefaultConfiguration().set(connection).set(SQLDialect.POSTGRES)
+    jooqConfig.set(DefaultExecuteListenerProvider(PrettyPrinter()))
 
-    return withDsl(DSL.using(configuration))
+    return withDsl(DSL.using(jooqConfig))
 }
 
 // print sql queries (see: https://www.jooq.org/doc/latest/manual/sql-execution/execute-listeners/)

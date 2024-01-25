@@ -14,57 +14,78 @@ import graphql.parser.Parser
 import graphql.validation.Validator
 import java.util.*
 
+data class RequestInfo(
+        val document: Document,
+        val operationName: String?,
+        val variables: Map<String, JsonNode>
+)
+
 class GraphQLService() {
 
     companion object {
+        private const val introspectionQuery = "IntrospectionQuery"
+        private val locale = Locale.ENGLISH
+
         private val schema = DemoSchemaProvider().getSchema()
         private val graphQL = GraphQL.newGraphQL(schema).build()
-        private val objectMapper = ObjectMapper()
-        private val parser = Parser()
+        private val jsonObjectMapper = ObjectMapper()
+        private val graphqlParser = Parser()
         private val databaseMapper = DemoDatabaseMapper()
-        private val queryTranspiler = QueryTranspiler(WhereCondition(Companion.databaseMapper), schema, Companion.databaseMapper)
+        private val queryTranspiler =
+                QueryTranspiler(
+                        WhereCondition(Companion.databaseMapper),
+                        schema,
+                        Companion.databaseMapper
+                )
+    }
+
+    fun extractRequestInfoFromBody(requestBody: String): RequestInfo? {
+        val jsonNode = jsonObjectMapper.readTree(requestBody)
+
+        val queries = jsonNode["query"]?.textValue()
+        if (queries.isNullOrBlank()) {
+            return null
+        }
+
+        val document = graphqlParser.parseDocument(queries)
+        val variables =
+                jsonNode["variables"]?.fields()?.asSequence()?.associate { (key, value) ->
+                    key to value
+                }
+                        ?: emptyMap()
+
+        val operationName = jsonNode["operationName"]?.textValue()
+        return RequestInfo(document, operationName, variables)
     }
 
     fun executeGraphQLQuery(requestInfo: RequestInfo): String {
-        val (document, selectedQuery, _) = requestInfo
+        val (document, operationName, _) = requestInfo // TODO support variables
 
-        val errors = Validator().validateDocument(schema, document, Locale.ENGLISH)
+        val errors = Validator().validateDocument(schema, document, locale)
         if (errors.isNotEmpty()) {
-            return objectMapper.writeValueAsString(
-                mapOf("data" to null, "errors" to errors.map { it.toSpecification() })
+            return jsonObjectMapper.writeValueAsString(
+                    mapOf("data" to null, "errors" to errors.map { it.toSpecification() })
             )
         }
 
-        val ast = selectedQuery?.let { document.getOperationDefinition(it).get() }
-            ?: document.definitions.filterIsInstance<OperationDefinition>().single()
+        val ast =
+                operationName?.let { document.getOperationDefinition(it).get() }
+                        ?: document.definitions.filterIsInstance<OperationDefinition>().single()
 
-        if (ast.name == "IntrospectionQuery") {
+        if (ast.name == introspectionQuery) {
             val result = graphQL.execute(IntrospectionQuery.INTROSPECTION_QUERY)
-            return objectMapper.writeValueAsString(result.toSpecification())
+            return jsonObjectMapper.writeValueAsString(result.toSpecification())
         }
 
         val queryTrees = queryTranspiler.buildInternalQueryTrees(ast)
         val results =
-            queryTrees.map { tree ->
-                executeJooqQuery { ctx ->
-                    ctx.select(queryTranspiler.resolveInternalQueryTree(tree)).fetch()
+                queryTrees.map { tree ->
+                    executeJooqQuery { ctx ->
+                        ctx.select(queryTranspiler.resolveInternalQueryTree(tree)).fetch()
+                    }
                 }
-            }
-        results.map(::println)
+
+        results.map(::println) // TODO rm debug statement
         return results.formatGraphQLResponse()
     }
-
-    fun executeGraphQLQuery(query: String) = executeGraphQLQuery(RequestInfo(parser.parseDocument(query), null, emptyMap()))
-
-    fun extractRequestInfoFromBody(requestBody: String): RequestInfo? {
-        val jsonNode = objectMapper.readTree(requestBody)
-        val queries = jsonNode["query"]?.textValue()
-        if (queries.isNullOrBlank()) return null
-        val document = parser.parseDocument(queries)
-        val variableDefinitions = jsonNode["variables"]?.fields()?.asSequence()?.associate { (key, value) -> key to value } ?: emptyMap()
-        val selectedQuery = jsonNode["operationName"]?.textValue()
-        return RequestInfo(document, selectedQuery, variableDefinitions)
-    }
 }
-
-data class RequestInfo(val document: Document, val selectedQuery: String?, val variables: Map<String, JsonNode>)

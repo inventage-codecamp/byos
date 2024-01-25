@@ -51,7 +51,7 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -136,7 +136,7 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -159,7 +159,7 @@ internal class ByosApplicationTest {
             }
 
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -182,7 +182,7 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -270,7 +270,7 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -310,7 +310,7 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -337,7 +337,7 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -361,7 +361,7 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -477,7 +477,7 @@ internal class ByosApplicationTest {
               }
             }
         """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -644,7 +644,7 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -693,7 +693,7 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 
     @Test
@@ -740,6 +740,6 @@ internal class ByosApplicationTest {
               }
             }
             """.trimIndent()
-        assertJsonEquals(expectedResult, graphQLService.executeGraphQLQuery(query))
+        assertJsonEquals(expectedResult, RequestInfo(graphqlParser.parseDocument(query), null, emptyMap()))
     }
 }

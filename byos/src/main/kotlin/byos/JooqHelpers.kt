@@ -1,29 +1,12 @@
 package byos
 
-import java.sql.DriverManager
-import org.jooq.DSLContext
 import org.jooq.ExecuteContext
 import org.jooq.ExecuteListener
 import org.jooq.Formattable
 import org.jooq.JSONFormat
-import org.jooq.SQLDialect
 import org.jooq.conf.Settings
 import org.jooq.impl.DSL
-import org.jooq.impl.DefaultConfiguration
-import org.jooq.impl.DefaultExecuteListenerProvider
 
-private const val userName = "postgres"
-private const val password = "postgres"
-private const val url = "jdbc:postgresql://localhost:5432/sakila"
-
-fun <T> executeJooqQuery(withDsl: (dsl: DSLContext) -> T): T {
-    val connection =
-            DriverManager.getConnection(url, userName, password) // TODO persistent connection
-    val jooqConfig = DefaultConfiguration().set(connection).set(SQLDialect.POSTGRES)
-    jooqConfig.set(DefaultExecuteListenerProvider(PrettyPrinter()))
-
-    return withDsl(DSL.using(jooqConfig))
-}
 
 // print sql queries (see: https://www.jooq.org/doc/latest/manual/sql-execution/execute-listeners/)
 class PrettyPrinter : ExecuteListener {

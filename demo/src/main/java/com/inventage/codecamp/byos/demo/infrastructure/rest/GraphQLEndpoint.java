@@ -1,21 +1,30 @@
 package com.inventage.codecamp.byos.demo.infrastructure.rest;
 
-import example.GraphQLService;
-import example.RequestInfo;
+import example.DemoDatabaseMapper;
+import example.DemoSchemaProvider;
+import byos.GraphQLService;
+import byos.RequestInfo;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import org.jooq.DSLContext;
 
 @Path("/graphql")
 @Produces({MediaType.APPLICATION_JSON})
 public class GraphQLEndpoint {
 
-    final private GraphQLService graphQLService;
+    DSLContext jooq;
 
-    public GraphQLEndpoint() {
-        graphQLService = new GraphQLService();
+    GraphQLService graphQLService;
+
+    GraphQLEndpoint() {}
+
+    @Inject
+    GraphQLEndpoint(DSLContext jooq) {
+        this.jooq = jooq;
+        this.graphQLService = new GraphQLService(new DemoSchemaProvider().getSchema(), new DemoDatabaseMapper(), jooq);
     }
 
     @POST

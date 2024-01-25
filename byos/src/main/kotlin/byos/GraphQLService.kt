@@ -1,9 +1,5 @@
-package example
+package byos
 
-import byos.QueryTranspiler
-import byos.WhereCondition
-import byos.executeJooqQuery
-import byos.formatGraphQLResponse
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import graphql.GraphQL
@@ -11,7 +7,9 @@ import graphql.introspection.IntrospectionQuery
 import graphql.language.Document
 import graphql.language.OperationDefinition
 import graphql.parser.Parser
+import graphql.schema.GraphQLSchema
 import graphql.validation.Validator
+import org.jooq.DSLContext
 import java.util.*
 
 data class RequestInfo(
@@ -20,28 +18,25 @@ data class RequestInfo(
         val variables: Map<String, JsonNode>
 )
 
-class GraphQLService() {
 
-    companion object {
-        private const val introspectionQuery = "IntrospectionQuery"
-        private val locale = Locale.ENGLISH
+class GraphQLService(val schema: GraphQLSchema, val databaseMapper: DatabaseMapper, val jooq: DSLContext) {
 
-        private val jsonObjectMapper = ObjectMapper()
+    private val introspectionQuery = "IntrospectionQuery"
+    private val locale = Locale.ENGLISH
 
-        private val schema = DemoSchemaProvider().getSchema()
-        private val schemaValidator = Validator()
+    private val jsonObjectMapper = ObjectMapper()
 
-        private val graphQL = GraphQL.newGraphQL(schema).build()
-        private val graphqlParser = Parser()
+    private val schemaValidator = Validator()
 
-        private val databaseMapper = DemoDatabaseMapper()
-        private val queryTranspiler =
-                QueryTranspiler(
-                        WhereCondition(Companion.databaseMapper),
-                        schema,
-                        Companion.databaseMapper
-                )
-    }
+    private val graphQL = GraphQL.newGraphQL(schema).build()
+    private val graphqlParser = Parser()
+
+    private val queryTranspiler =
+        QueryTranspiler(
+            WhereCondition(databaseMapper),
+            schema,
+            databaseMapper
+        )
 
     fun extractRequestInfoFromBody(requestBody: String): RequestInfo? {
         val jsonNode = jsonObjectMapper.readTree(requestBody)
@@ -84,9 +79,7 @@ class GraphQLService() {
         val queryTrees = queryTranspiler.buildInternalQueryTrees(ast)
         val results =
                 queryTrees.map { tree ->
-                    executeJooqQuery { ctx ->
-                        ctx.select(queryTranspiler.resolveInternalQueryTree(tree)).fetch()
-                    }
+                    jooq.select(queryTranspiler.resolveInternalQueryTree(tree)).fetch()
                 }
 
         results.map(::println) // TODO rm debug statement

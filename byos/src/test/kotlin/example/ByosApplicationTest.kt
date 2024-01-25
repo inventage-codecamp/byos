@@ -1,5 +1,7 @@
 package example
 
+import byos.GraphQLService
+import byos.RequestInfo
 import graphql.parser.Parser
 import org.junit.jupiter.api.Test
 

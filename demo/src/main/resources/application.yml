@@ -4,3 +4,12 @@ quarkus:
   http:
     port: 8888
     test-port: 18888
+  datasource:
+    db-kind: postgresql
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/sakila
+    username: postgres
+    password: postgres
+  jooq:
+    dialect: POSTGRES
+    configuration: com.inventage.codecamp.byos.demo.infrastructure.jooq.JooqConfiguration

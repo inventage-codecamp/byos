@@ -26,7 +26,8 @@ class GraphQLService() {
         private val graphQL = GraphQL.newGraphQL(schema).build()
         private val objectMapper = ObjectMapper()
         private val parser = Parser()
-        private val queryTranspiler = QueryTranspiler(WhereCondition(::getConditionForRelationship), schema)
+        private val databaseMapper = DemoDatabaseMapper();
+        private val queryTranspiler = QueryTranspiler(WhereCondition(Companion.databaseMapper), schema, Companion.databaseMapper)
     }
 
     fun executeGraphQLQuery(requestInfo: RequestInfo): String {

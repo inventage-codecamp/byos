@@ -49,7 +49,8 @@ data class PageInfo(
 
 class QueryTranspiler(
     private val whereCondition: WhereCondition,
-    private val schema: GraphQLSchema
+    private val schema: GraphQLSchema,
+    private val databaseMapper: DatabaseMapper
 ) {
 
     fun buildInternalQueryTrees(queryDefinition: OperationDefinition): List<InternalQueryNode.Relation> =
@@ -127,7 +128,7 @@ class QueryTranspiler(
             }
 
     fun resolveInternalQueryTree(relation: InternalQueryNode.Relation, joinCondition: Condition = DSL.noCondition()): org.jooq.Field<JSON> {
-        val outerTable = getTableWithAlias(relation)
+        val outerTable = databaseMapper.getTableWithAlias(relation)
 
         val (relations, attributes) = relation.children.partition { it is InternalQueryNode.Relation }
         val attributeNames = attributes.distinctBy { it.graphQLAlias }
@@ -137,7 +138,7 @@ class QueryTranspiler(
             }
 
         val subSelects = relations.map { subRelation ->
-            val innerTable = getTableWithAlias(subRelation as InternalQueryNode.Relation)
+            val innerTable = databaseMapper.getTableWithAlias(subRelation as InternalQueryNode.Relation)
             resolveInternalQueryTree(
                 subRelation, whereCondition.getForRelationship(subRelation.graphQLFieldName, outerTable, innerTable)
             )

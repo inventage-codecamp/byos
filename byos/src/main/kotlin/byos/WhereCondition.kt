@@ -1,6 +1,7 @@
 package byos
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import example.DemoDatabaseMapper
 import graphql.language.Argument
 import graphql.language.ArrayValue
 import graphql.language.BooleanValue
@@ -18,9 +19,9 @@ import org.jooq.SortOrder
 import org.jooq.Table
 import org.jooq.impl.DSL
 
-class WhereCondition(private val getConditionForRelationship: (String, Table<*>, Table<*>) -> Condition?) {
+class WhereCondition(private val databaseMapper: DatabaseMapper) {
     fun getForRelationship(relationshipName: String, left: Table<*>, right: Table<*>): Condition =
-        getConditionForRelationship(relationshipName, left, right)
+        databaseMapper.getConditionForRelationship(relationshipName, left, right)
             ?: error("No relationship called $relationshipName found for tables $left and $right")
 
 

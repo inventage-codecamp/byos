@@ -2,7 +2,7 @@ type Query {
     allFilms(first: Int, after: String, orderBy: OrderFilmsBy): FilmConnection!
     filmById(film_id: ID!): Film
     filmByIds(first: Int, after: String, film_id: [ID!]!): FilmConnection!
-    allActors: [Actor!]!
+    allActors(where: ActorWhere): [Actor!]!
     actorById(actor_id: ID!): Actor
     allCategories(first: Int, after: String): CategoryConnection!
     allStores(first: Int, after: String): StoreConnection!
@@ -52,6 +52,11 @@ type Actor {
     first_name: String!
     last_name: String!
     films(first: Int, after: String, orderBy: OrderFilmsBy, release_year: Int): FilmConnection!
+
+}
+
+input ActorWhere {
+    first_name: String_comparison_exp
 }
 
 type Store {
@@ -111,4 +116,54 @@ type CategoryConnection {
 type CategoryEdge {
     node: Category!
     cursor: String!
+}
+
+input String_comparison_exp {
+    _eq: String
+    _gt: String
+    _gte: String
+
+    """does the column match the given case-insensitive pattern"""
+    _ilike: String
+    _in: [String!]
+
+    """
+    does the column match the given POSIX regular expression, case insensitive
+    """
+    _iregex: String
+    _is_null: Boolean
+
+    """does the column match the given pattern"""
+    _like: String
+    _lt: String
+    _lte: String
+    _neq: String
+
+    """does the column NOT match the given case-insensitive pattern"""
+    _nilike: String
+    _nin: [String!]
+
+    """
+    does the column NOT match the given POSIX regular expression, case insensitive
+    """
+    _niregex: String
+
+    """does the column NOT match the given pattern"""
+    _nlike: String
+
+    """
+    does the column NOT match the given POSIX regular expression, case sensitive
+    """
+    _nregex: String
+
+    """does the column NOT match the given SQL regular expression"""
+    _nsimilar: String
+
+    """
+    does the column match the given POSIX regular expression, case sensitive
+    """
+    _regex: String
+
+    """does the column match the given SQL regular expression"""
+    _similar: String
 }

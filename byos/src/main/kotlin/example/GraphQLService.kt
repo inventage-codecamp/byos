@@ -15,14 +15,11 @@ import graphql.schema.idl.RuntimeWiring
 import graphql.schema.idl.SchemaGenerator
 import graphql.schema.idl.SchemaParser
 import graphql.validation.Validator
-import jakarta.servlet.http.HttpServletRequest
-import org.springframework.stereotype.Component
 import java.io.File
-import java.util.Locale
-import java.util.stream.Collectors
+import java.util.*
 
-@Component
-class GraphQLService {
+class GraphQLService() {
+
     companion object {
         private val schemaFile = File("src/main/resources/graphql/schema.graphqls")
         private val schema = SchemaGenerator().makeExecutableSchema(SchemaParser().parse(schemaFile), RuntimeWiring.newRuntimeWiring().build())
@@ -63,8 +60,7 @@ class GraphQLService {
 
     fun executeGraphQLQuery(query: String) = executeGraphQLQuery(RequestInfo(parser.parseDocument(query), null, emptyMap()))
 
-    fun extractRequestInfo(request: HttpServletRequest): RequestInfo? {
-        val requestBody = request.reader.lines().collect(Collectors.joining())
+    fun extractRequestInfoFromBody(requestBody: String): RequestInfo? {
         val jsonNode = objectMapper.readTree(requestBody)
         val queries = jsonNode["query"]?.textValue()
         if (queries.isNullOrBlank()) return null

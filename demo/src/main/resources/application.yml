@@ -1,2 +1,6 @@
-greeting:
-  message: "hello"
+quarkus:
+  application:
+    name: demo
+  http:
+    port: 8888
+    test-port: 18888

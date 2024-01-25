@@ -1,0 +1,7 @@
+
+
+###
+POST http://localhost:8888/graphql
+Content-Type: */*
+
+{"query": "query { allActors { first_name }}"}

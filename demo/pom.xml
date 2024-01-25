@@ -61,6 +61,11 @@
             <version>21.3</version>
         </dependency>
         <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>21.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.inventage.codecamp.byos-demo</groupId>
             <artifactId>byos</artifactId>
             <version>${project.version}</version>

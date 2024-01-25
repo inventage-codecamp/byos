@@ -1,9 +1,9 @@
 package com.inventage.codecamp.byos.demo.infrastructure.rest;
 
-import example.DemoDatabaseMapper;
-import example.DemoSchemaProvider;
 import byos.GraphQLService;
 import byos.RequestInfo;
+import com.inventage.codecamp.byos.demo.infrastructure.jooq.SchemaMetadataGenerator;
+import example.DemoDatabaseMapper;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -19,12 +19,16 @@ public class GraphQLEndpoint {
 
     GraphQLService graphQLService;
 
+    @Inject
+    SchemaMetadataGenerator schemaMetadataGenerator;
+
     GraphQLEndpoint() {}
 
     @Inject
-    GraphQLEndpoint(DSLContext jooq) {
+    GraphQLEndpoint(DSLContext jooq, SchemaMetadataGenerator schemaMetadataGenerator) {
         this.jooq = jooq;
-        this.graphQLService = new GraphQLService(new DemoSchemaProvider().getSchema(), new DemoDatabaseMapper(), jooq);
+        this.schemaMetadataGenerator = schemaMetadataGenerator;
+        this.graphQLService = new GraphQLService(schemaMetadataGenerator.doit(), new DemoDatabaseMapper(), jooq);
     }
 
     @POST

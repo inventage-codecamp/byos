@@ -11,22 +11,17 @@ import graphql.introspection.IntrospectionQuery
 import graphql.language.Document
 import graphql.language.OperationDefinition
 import graphql.parser.Parser
-import graphql.schema.idl.RuntimeWiring
-import graphql.schema.idl.SchemaGenerator
-import graphql.schema.idl.SchemaParser
 import graphql.validation.Validator
-import java.io.File
 import java.util.*
 
 class GraphQLService() {
 
     companion object {
-        private val schemaFile = File("src/main/resources/graphql/schema.graphqls")
-        private val schema = SchemaGenerator().makeExecutableSchema(SchemaParser().parse(schemaFile), RuntimeWiring.newRuntimeWiring().build())
+        private val schema = DemoSchemaProvider().getSchema()
         private val graphQL = GraphQL.newGraphQL(schema).build()
         private val objectMapper = ObjectMapper()
         private val parser = Parser()
-        private val databaseMapper = DemoDatabaseMapper();
+        private val databaseMapper = DemoDatabaseMapper()
         private val queryTranspiler = QueryTranspiler(WhereCondition(Companion.databaseMapper), schema, Companion.databaseMapper)
     }
 

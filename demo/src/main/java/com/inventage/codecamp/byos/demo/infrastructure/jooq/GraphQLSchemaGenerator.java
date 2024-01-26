@@ -4,7 +4,6 @@ import graphql.scalars.ExtendedScalars;
 import graphql.schema.*;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import kotlin.reflect.jvm.internal.impl.protobuf.GeneratedMessageLite;
 import org.jooq.*;
 
 import java.math.BigDecimal;
@@ -20,14 +19,14 @@ import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLObjectType.newObject;
 
 @ApplicationScoped
-public class SchemaMetadataGenerator {
+public class GraphQLSchemaGenerator {
 
 
 
     @Inject
     DSLContext jooq;
 
-    public GraphQLSchema doit() {
+    public GraphQLSchema createSchema() {
         Meta meta = jooq.meta();
         Catalog catalog = meta.getCatalogs().get(0);
         Schema publicSchema = catalog.getSchema("public");

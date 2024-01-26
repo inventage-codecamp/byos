@@ -2,7 +2,7 @@ package com.inventage.codecamp.byos.demo.infrastructure.rest;
 
 import byos.GraphQLService;
 import byos.RequestInfo;
-import com.inventage.codecamp.byos.demo.infrastructure.jooq.SchemaMetadataGenerator;
+import com.inventage.codecamp.byos.demo.infrastructure.jooq.GraphQLSchemaGenerator;
 import example.DemoDatabaseMapper;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
@@ -20,19 +20,20 @@ public class GraphQLEndpoint {
     GraphQLService graphQLService;
 
     @Inject
-    SchemaMetadataGenerator schemaMetadataGenerator;
+    GraphQLSchemaGenerator graphQLSchemaGenerator;
 
     GraphQLEndpoint() {}
 
     @Inject
-    GraphQLEndpoint(DSLContext jooq, SchemaMetadataGenerator schemaMetadataGenerator) {
+    GraphQLEndpoint(DSLContext jooq, GraphQLSchemaGenerator graphQLSchemaGenerator) {
         this.jooq = jooq;
-        this.schemaMetadataGenerator = schemaMetadataGenerator;
-        this.graphQLService = new GraphQLService(schemaMetadataGenerator.doit(), new DemoDatabaseMapper(), jooq);
+        this.graphQLSchemaGenerator = graphQLSchemaGenerator;
+        this.graphQLService = new GraphQLService(graphQLSchemaGenerator.createSchema(), new DemoDatabaseMapper(), jooq);
     }
 
     @POST
     public String graphql(String body) {
+        graphQLSchemaGenerator.createSchema();
         RequestInfo requestInfo = graphQLService.extractRequestInfoFromBody(body);
         String result = graphQLService.executeGraphQLQuery(requestInfo);
         return result;

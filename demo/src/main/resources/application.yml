@@ -7,7 +7,7 @@ quarkus:
   datasource:
     db-kind: postgresql
     jdbc:
-      url: jdbc:postgresql://localhost:5432/sakila
+      url: jdbc:postgresql://localhost:5432/portal-organisation
     username: postgres
     password: postgres
   jooq:

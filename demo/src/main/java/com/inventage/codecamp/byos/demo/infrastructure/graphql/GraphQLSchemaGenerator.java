@@ -1,19 +1,27 @@
 package com.inventage.codecamp.byos.demo.infrastructure.graphql;
 
+import com.inventage.codecamp.byos.demo.infrastructure.psql.ColumnDefinition;
+import com.inventage.codecamp.byos.demo.infrastructure.psql.ExpressionVisitor;
+import com.inventage.codecamp.byos.demo.infrastructure.psql.SelectItemVisitor;
 import graphql.scalars.ExtendedScalars;
 import graphql.schema.*;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import net.sf.jsqlparser.JSQLParserException;
+import net.sf.jsqlparser.parser.CCJSqlParserUtil;
+import net.sf.jsqlparser.statement.create.view.CreateView;
+import net.sf.jsqlparser.statement.select.*;
 import org.jooq.*;
+import org.jooq.util.xml.jaxb.InformationSchema;
+import org.jooq.util.xml.jaxb.View;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.*;
+import java.sql.Date;
 import java.time.OffsetDateTime;
 import java.time.Year;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static graphql.Scalars.*;
@@ -32,6 +40,40 @@ public class GraphQLSchemaGenerator {
         Schema schema = catalog.getSchema(schemaName);
         return from(schema);
     }
+
+    private Map<String, ColumnDefinition> getViewDefinition(Table table) {
+        System.out.println("getViewDefinition: " +table.getName());
+        InformationSchema informationSchema = jooq.informationSchema(table.getCatalog());
+        List<View> views = informationSchema.getViews();
+        View view = views.stream().filter(v -> v.getTableName().equals(table.getName())).findFirst().orElseThrow();
+        String memberViewDefinition = view.getViewDefinition();
+        try {
+            CreateView createViewStatement = (CreateView) CCJSqlParserUtil.parse(memberViewDefinition);
+            net.sf.jsqlparser.schema.Table fromTable = findFromItem(((PlainSelect) createViewStatement.getSelect().getSelectBody()).getFromItem());
+            Map<String, ColumnDefinition> viewDefinition = new HashMap<>();
+            if (fromTable != null) {
+                List<SelectItem> selectItems = ((PlainSelect) createViewStatement.getSelect().getSelectBody()).getSelectItems();
+                selectItems.stream().forEach(selectItem -> selectItem.accept(new SelectItemVisitor(viewDefinition, fromTable.getSchemaName())));
+            }
+            return viewDefinition;
+        } catch (JSQLParserException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected net.sf.jsqlparser.schema.Table findFromItem(FromItem fromItem) throws RuntimeException {
+        if (fromItem instanceof net.sf.jsqlparser.schema.Table) {
+            return (net.sf.jsqlparser.schema.Table) fromItem;
+        } else if (fromItem instanceof SubSelect) {
+            PlainSelect selectBody = (PlainSelect) ((SubSelect) fromItem).getSelectBody();
+            return findFromItem(selectBody.getFromItem());
+        } else if (fromItem instanceof ParenthesisFromItem) {
+            return findFromItem(((ParenthesisFromItem) fromItem).getFromItem());
+        }
+        return null;
+        //throw new RuntimeException("found no matching fromItem type for: " + fromItem.getClass().getName());
+    }
+
 
     protected GraphQLSchema from(Schema schema) {
         GraphQLSchema.Builder builder = GraphQLSchema.newSchema();
@@ -57,8 +99,31 @@ public class GraphQLSchemaGenerator {
     protected GraphQLObjectType from(String tableName, Table table) {
         System.out.println(String.format("Processing table '%s'", tableName));
         GraphQLObjectType.Builder typeBuilder = newObject().name(tableName);
-        Arrays.stream(table.fields()).forEach(field -> typeBuilder.field(from(field, table.getReferences())));
+        List<ForeignKey> references = getReferences(table);
+        Arrays.stream(table.fields()).forEach(field -> typeBuilder.field(from(field, references)));
         return typeBuilder.build();
+    }
+    
+    protected List<ForeignKey> getReferences(Table table) {
+        TableOptions.TableType tableType = table.getTableType();
+        switch (tableType) {
+            case TABLE:
+                return table.getReferences();
+            case VIEW: {
+                Map<String, ColumnDefinition> viewDefinition = getViewDefinition(table);
+                List<ForeignKey> collect = viewDefinition.entrySet().stream().map(entry -> {
+                    Schema schema = table.getCatalog().getSchema(entry.getValue().schemaName());
+                    if (schema == null) {
+                        schema = table.getSchema();
+                    }
+                    Table<?> underlyingTable = schema.getTable(entry.getValue().tableName());
+                    return underlyingTable.getReferences();
+                }).flatMap(list -> list.stream()).collect(Collectors.toList());
+                return collect;
+            }
+            default:
+                throw new UnsupportedOperationException(String.format("Unable to process table type '%s'", tableType));
+        }
     }
 
     protected GraphQLFieldDefinition.Builder from(Field<?> field, List<ForeignKey> foreignKeys) {

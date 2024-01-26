@@ -4,7 +4,6 @@ import byos.GraphQLService;
 import byos.RequestInfo;
 import com.inventage.codecamp.byos.demo.infrastructure.graphql.GraphQLSchemaGenerator;
 import com.inventage.codecamp.byos.demo.infrastructure.jooq.JoinConditionGenerator;
-import example.DemoDatabaseMapper;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;

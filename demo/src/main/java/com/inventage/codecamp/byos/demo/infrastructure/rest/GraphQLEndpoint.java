@@ -31,10 +31,11 @@ public class GraphQLEndpoint {
     @Inject
     GraphQLEndpoint(DSLContext jooq, GraphQLSchemaGenerator graphQLSchemaGenerator, JoinConditionGenerator joinConditionGenerator) {
         this.jooq = jooq;
+        String schema = "public";
         this.graphQLSchemaGenerator = graphQLSchemaGenerator;
-        this.joinConditionGenerator = joinConditionGenerator.init();
+        this.joinConditionGenerator = joinConditionGenerator.init(schema);
         this.graphQLService = new GraphQLService(
-                graphQLSchemaGenerator.createSchema("public"),
+                graphQLSchemaGenerator.createSchema(schema),
                 joinConditionGenerator, jooq);
     }
 

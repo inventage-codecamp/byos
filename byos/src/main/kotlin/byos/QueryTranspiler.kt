@@ -30,7 +30,7 @@ sealed class InternalQueryNode(val graphQLFieldName: String, val graphQLAlias: S
 }
 
 data class FieldTypeInfo(val graphQLTypeName: String, val isList: Boolean) {
-    val relationName = graphQLTypeName.lowercase()
+    val relationName = graphQLTypeName; //.lowercase()
 }
 
 data class ConnectionInfo(
@@ -207,7 +207,7 @@ class QueryTranspiler(
         val attributeNames =
                 attributes.distinctBy { it.graphQLAlias }.map { attribute ->
                     outerTable
-                            .field(attribute.graphQLFieldName.lowercase())
+                            .field(attribute.graphQLFieldName)//.lowercase())
                             ?.`as`(attribute.graphQLAlias)
                             ?: error(
                                     "Field ${attribute.graphQLFieldName} does not exist on table $outerTable"

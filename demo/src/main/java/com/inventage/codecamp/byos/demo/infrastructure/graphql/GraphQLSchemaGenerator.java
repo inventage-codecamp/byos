@@ -9,9 +9,11 @@ import org.jooq.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.*;
+import java.time.OffsetDateTime;
 import java.time.Year;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static graphql.Scalars.*;
@@ -53,6 +55,7 @@ public class GraphQLSchemaGenerator {
     }
 
     protected GraphQLObjectType from(String tableName, Table table) {
+        System.out.println(String.format("Processing table '%s'", tableName));
         GraphQLObjectType.Builder typeBuilder = newObject().name(tableName);
         Arrays.stream(table.fields()).forEach(field -> typeBuilder.field(from(field, table.getReferences())));
         return typeBuilder.build();
@@ -99,7 +102,9 @@ public class GraphQLSchemaGenerator {
             targetType = GraphQLInt;
         } else if (type.equals(Float.class)) {
             targetType = GraphQLFloat;
-            
+        } else if (type.equals(UUID.class)) {
+            targetType = GraphQLID;
+
         // extended types
         } else if (type.equals(Long.class)) {
             targetType = ExtendedScalars.GraphQLLong;
@@ -117,6 +122,8 @@ public class GraphQLSchemaGenerator {
             targetType = ExtendedScalars.Time; // TODO is this correct?
         } else if (type.equals(Date.class)) {
             targetType = ExtendedScalars.Date; //
+        } else if (type.equals(OffsetDateTime.class)) {
+            targetType = ExtendedScalars.DateTime; //
         } else if (type.equals(Year.class)) {
             targetType = GraphQLString; // TODO define custom type
         } else if (type.equals(Object.class)) {

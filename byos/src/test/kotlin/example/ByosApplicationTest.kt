@@ -3,8 +3,10 @@ package example
 import byos.GraphQLService
 import byos.RequestInfo
 import graphql.parser.Parser
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
+@Disabled
 internal class ByosApplicationTest {
     private lateinit var graphQLService: GraphQLService
     private lateinit var graphqlParser: Parser

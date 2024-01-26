@@ -27,7 +27,10 @@ public class JoinConditionGenerator implements DatabaseMapper {
     
     Map<Rel,ForeignKey> joins = new HashMap<>();
 
-    public JoinConditionGenerator init() {
+    private String schemaName;
+
+    public JoinConditionGenerator init(String schemaName) {
+        this.schemaName = schemaName;
         loadTables();
         loadJoins();
         return this;
@@ -62,7 +65,7 @@ public class JoinConditionGenerator implements DatabaseMapper {
     private void loadTables() {
         Meta meta = jooq.meta();
         Catalog catalog = meta.getCatalogs().get(0);
-        Schema schema = catalog.getSchema("public");
+        Schema schema = catalog.getSchema(schemaName);
         schema.tableStream()
                 .forEach(table -> tables.put(table.getName(), table));
     }

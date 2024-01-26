@@ -2,7 +2,8 @@ package com.inventage.codecamp.byos.demo.infrastructure.rest;
 
 import byos.GraphQLService;
 import byos.RequestInfo;
-import com.inventage.codecamp.byos.demo.infrastructure.jooq.GraphQLSchemaGenerator;
+import com.inventage.codecamp.byos.demo.infrastructure.graphql.GraphQLSchemaGenerator;
+import com.inventage.codecamp.byos.demo.infrastructure.jooq.JoinConditionGenerator;
 import example.DemoDatabaseMapper;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.POST;
@@ -22,18 +23,23 @@ public class GraphQLEndpoint {
     @Inject
     GraphQLSchemaGenerator graphQLSchemaGenerator;
 
+    @Inject
+    JoinConditionGenerator joinConditionGenerator;
+
     GraphQLEndpoint() {}
 
     @Inject
-    GraphQLEndpoint(DSLContext jooq, GraphQLSchemaGenerator graphQLSchemaGenerator) {
+    GraphQLEndpoint(DSLContext jooq, GraphQLSchemaGenerator graphQLSchemaGenerator, JoinConditionGenerator joinConditionGenerator) {
         this.jooq = jooq;
         this.graphQLSchemaGenerator = graphQLSchemaGenerator;
-        this.graphQLService = new GraphQLService(graphQLSchemaGenerator.createSchema(), new DemoDatabaseMapper(), jooq);
+        this.joinConditionGenerator = joinConditionGenerator.init();
+        this.graphQLService = new GraphQLService(
+                graphQLSchemaGenerator.createSchema("public"),
+                joinConditionGenerator, jooq);
     }
 
     @POST
     public String graphql(String body) {
-        graphQLSchemaGenerator.createSchema();
         RequestInfo requestInfo = graphQLService.extractRequestInfoFromBody(body);
         String result = graphQLService.executeGraphQLQuery(requestInfo);
         return result;

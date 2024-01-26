@@ -78,7 +78,7 @@ class DemoDatabaseMapper : DatabaseMapper {
                                                         )
                                         )
                         )
-                relationshipName == "language" && left is Film && right is Language ->
+                relationshipName == "language_id" && left is Film && right is Language ->
                         left.LANGUAGE_ID.eq(right.LANGUAGE_ID)
                 relationshipName == "original_language" && left is Film && right is Language ->
                         left.ORIGINAL_LANGUAGE_ID.eq(right.LANGUAGE_ID)

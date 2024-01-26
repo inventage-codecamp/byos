@@ -1,4 +1,4 @@
-package com.inventage.codecamp.byos.demo.infrastructure.jooq;
+package com.inventage.codecamp.byos.demo.infrastructure.graphql;
 
 import graphql.scalars.ExtendedScalars;
 import graphql.schema.*;
@@ -21,21 +21,17 @@ import static graphql.schema.GraphQLObjectType.newObject;
 @ApplicationScoped
 public class GraphQLSchemaGenerator {
 
-
-
     @Inject
     DSLContext jooq;
 
-    public GraphQLSchema createSchema() {
+    public GraphQLSchema createSchema(String schemaName) {
         Meta meta = jooq.meta();
         Catalog catalog = meta.getCatalogs().get(0);
-        Schema publicSchema = catalog.getSchema("public");
-        GraphQLSchema schema = from(publicSchema);
-
-        return schema;
+        Schema schema = catalog.getSchema(schemaName);
+        return from(schema);
     }
 
-    public GraphQLSchema from(Schema schema) {
+    protected GraphQLSchema from(Schema schema) {
         GraphQLSchema.Builder builder = GraphQLSchema.newSchema();
         GraphQLObjectType.Builder queryBuilder = newObject().name("Query");
 
@@ -56,13 +52,13 @@ public class GraphQLSchemaGenerator {
         return builder.build();
     }
 
-    public GraphQLObjectType from(String tableName, Table table) {
+    protected GraphQLObjectType from(String tableName, Table table) {
         GraphQLObjectType.Builder typeBuilder = newObject().name(tableName);
         Arrays.stream(table.fields()).forEach(field -> typeBuilder.field(from(field, table.getReferences())));
         return typeBuilder.build();
     }
 
-    private GraphQLFieldDefinition.Builder from(Field<?> field, List<ForeignKey> foreignKeys) {
+    protected GraphQLFieldDefinition.Builder from(Field<?> field, List<ForeignKey> foreignKeys) {
         final String fieldName = replaceSpacesWithUnderscores(field.getName());
 
         final List<Key> fks = foreignKeys
@@ -70,23 +66,19 @@ public class GraphQLSchemaGenerator {
             .filter(e -> e.getFields().contains(field))
             .map(e -> e.getKey())
             .collect(Collectors.toList());
-        System.out.println(fks);
 
         // assuming there is at most one foreign key with this fields name
         if (!fks.isEmpty()){
             if (fks.size() > 1) {
-                System.out.println("ASSUMPTION INVALID");
+                throw new IllegalStateException(String.format("Key '%s' is configured with multiple foreign keys: '%s'", fieldName, fks.toString()));
             }
             
-            final String tableName = fks.get(0).getTable().getName();
-            final String capitalizedTableName = capitalize(tableName);
+            final String referencedTableName = fks.get(0).getTable().getName();
+            final String capitalizedTableName = capitalize(referencedTableName);
             
-            System.out.println(fks);
-            System.out.println(capitalizedTableName);
-
             return newFieldDefinition()
-                    .name(tableName)
-                    .type(GraphQLTypeReference.typeRef(capitalizedTableName));
+                    .name(fieldName)
+                    .type(checkNullable(field.getDataType(), GraphQLTypeReference.typeRef(capitalizedTableName)));
         } else {
             return newFieldDefinition()
                     .name(fieldName)
@@ -94,7 +86,7 @@ public class GraphQLSchemaGenerator {
         }
     }
 
-    private GraphQLOutputType from(String fieldName, DataType datatype) {
+    protected GraphQLOutputType from(String fieldName, DataType datatype) {
         Class type = datatype.getType();
         GraphQLOutputType targetType;
         
@@ -154,11 +146,14 @@ public class GraphQLSchemaGenerator {
             throw new IllegalArgumentException(String.format("unknown datatype for field '%s': %s", fieldName, type.toString()));
         }
 
-        if (!datatype.nullable()) {
-            targetType = GraphQLNonNull.nonNull(targetType);
-        }
+        return checkNullable(datatype, targetType);
+    }
 
-        return targetType;
+    protected GraphQLOutputType checkNullable(DataType datatype, GraphQLOutputType type) {
+        if (!datatype.nullable()) {
+            return GraphQLNonNull.nonNull(type);
+        }
+        return type;
     }
 
     private String capitalize(String str) {
